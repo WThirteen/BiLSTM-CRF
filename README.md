@@ -1,17 +1,29 @@
 # BiLSTM-CRF
-# 中文命名实体识别
+## 中文命名实体识别
 
 # 说明  
 ## 下载数据集  
-数据集文件如下：  
+* 阿里云盘链接  
+BiLSTM-CRF
+https://www.alipan.com/s/hx1UBEZz8rB
+提取码: wt34  
+
+数据集如下：  
 ```
 --- BiLSTM-CRF
 --- --- data
 --- --- --- train.txt
 --- --- --- test.txt
---- --- train.py
---- --- bilstem_crf_model.py
 ...
+```
+## 修改配置文件路径
+将config.py文件中的路径修改为本地数据集存放路径
+```
+# 训练集路径
+path_train = " "
+
+# 测试集路径
+path_test =  " "
 ```
 
 # 使用
@@ -21,7 +33,7 @@ Python == 3.10
 ```
 pip install -r requirements.txt
 ```
-
+## 训练
 数据集下载完成后，直接使用命令：
 ```
 python train.py
