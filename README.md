@@ -14,7 +14,6 @@ https://www.alipan.com/s/hx1UBEZz8rB
 --- --- data
 --- --- --- train.txt
 --- --- --- test.txt
-...
 ```
 ## 修改配置文件路径
 将config.py文件中的路径修改为本地数据集存放路径
