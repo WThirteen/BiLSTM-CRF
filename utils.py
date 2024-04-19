@@ -7,6 +7,7 @@ from torch.utils.data import DataLoader
 from read_file_txt import load_data
 from bilstm_crf_model import NERDataset
 from bilstm_crf_model import NERLSTM_CRF
+import config
 
 word2id, tag2id, x_train, x_test, x_valid, y_train, y_test, y_valid, id2tag = load_data()
 
@@ -33,19 +34,12 @@ def parse_tags(text, path):
     return res
 
 
-class Config:
-    embedding_dim = 100
-    hidden_dim = 200
-    vocab_size = len(word2id)
-    num_tags = len(tag2id)
-    dropout = 0.2
-    lr = 0.001
-    weight_decay = 1e-5
-
 
 
 def utils_to_train():
-    config=Config()
+
+
+    # config=config()
 
     device = torch.device('cpu')
     max_epoch = 1

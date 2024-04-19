@@ -26,7 +26,6 @@ def load_text(name, word2id=None):
     for line in lines:
         x, y = [], []
         for v in line:
-            # print(v)
             w,t = v.split()
             if w not in word2id and flag:
                 word2id[w]=len(word2id)
@@ -48,18 +47,16 @@ def load_text(name, word2id=None):
 
     return np.array(x_train), np.array(y_train), word2id
 
-    # return np.array(x_train[:10000]), np.array(y_train[:10000]), word2id
-
 
 def load_data():
 
     x_train, y_train, word2id = load_text(config.path_train)
     x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train, test_size=0.2)
-    print("train:", x_train.shape, y_train.shape)
-    print("valid:", x_valid.shape, y_valid.shape)
+    # print("train:", x_train.shape, y_train.shape)
+    # print("valid:", x_valid.shape, y_valid.shape)
     x_test, y_test, _ = load_text(config.path_test, word2id)
 
-    print("test len:", len(x_test))
+    # print("test len:", len(x_test))
     print(id2tag)
 
     return word2id, tag2id, x_train, x_test, x_valid, y_train, y_test, y_valid, id2tag

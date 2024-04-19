@@ -156,5 +156,6 @@ if __name__ == '__main__':
     cn = ChineseNER()
     cn.train()
     # cn.predict()
+    # cn.test()
 
 
