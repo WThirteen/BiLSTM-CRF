@@ -3,7 +3,8 @@ from TorchCRF import CRF
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset
-
+from utils import load_data
+import config
 
 # 命名体识别数据
 class NERDataset(Dataset):
@@ -19,15 +20,19 @@ class NERDataset(Dataset):
 
 # LSTM_CRF模型
 class NERLSTM_CRF(nn.Module):
-    def __init__(self, config):
+    def __init__(self,config):
         super(NERLSTM_CRF, self).__init__()
+        word2id = load_data()[0]
+        tag2id = load_data()[1]
+
+        vocab_size = len(word2id)
+        num_tags = len(tag2id)
 
         self.embedding_dim = config.embedding_dim
+        self.num_tags = num_tags
         self.hidden_dim = config.hidden_dim
-        self.vocab_size = config.vocab_size
-        self.num_tags = config.num_tags
 
-        self.embeds = nn.Embedding(self.vocab_size, self.embedding_dim)
+        self.embeds = nn.Embedding(vocab_size, self.embedding_dim)
         self.dropout = nn.Dropout(config.dropout)
 
         self.lstm = nn.LSTM(
