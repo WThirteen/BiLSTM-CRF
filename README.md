@@ -15,6 +15,13 @@
 ```
 
 # 使用
+## 环境配置
+Python == 3.10  
+使用命令行配置环境
+```
+pip install -r requirements.txt
+```
+
 数据集下载完成后，直接使用命令：
 ```
 python train.py
