@@ -1,0 +1,5 @@
+numpy==1.24.4
+scikit_learn==1.4.1.post1
+torch==2.2.2
+TorchCRF==1.1.0
+TorchCRF==1.1.0
