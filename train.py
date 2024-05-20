@@ -62,7 +62,7 @@ class ChineseNER(object):
 
                 # 统计非0的，也就是真实标签的长度
                 leng = []
-                res = val_y.cpu()
+                # res = val_y.cpu()
                 for i in val_y.cpu():
                     tmp = []
                     for j in i:
@@ -155,7 +155,7 @@ class ChineseNER(object):
 if __name__ == '__main__':
     cn = ChineseNER()
     cn.train()
-    # cn.predict()
+    cn.predict("寒武纪在北京举办2022春季专场招聘会")
     # cn.test()
 
 

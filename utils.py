@@ -38,24 +38,18 @@ def parse_tags(text, path):
 
 def utils_to_train():
 
-
-    # config=config()
-
     device = torch.device('cpu')
-    max_epoch = 1
-    batch_size = 32
-    num_workers = 4
-
     train_dataset = NERDataset(x_train, y_train)
     valid_dataset = NERDataset(x_valid, y_valid)
     test_dataset = NERDataset(x_test, y_test)
 
-    train_data_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
-    valid_data_loader = DataLoader(valid_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
-    test_data_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
+    train_data_loader = DataLoader(train_dataset, batch_size=config.batch_size, shuffle=True, num_workers=config.num_workers)
+    valid_data_loader = DataLoader(valid_dataset, batch_size=config.batch_size, shuffle=True, num_workers=config.num_workers)
+    test_data_loader = DataLoader(test_dataset, batch_size=config.batch_size, shuffle=True, num_workers=config.num_workers)
 
     model = NERLSTM_CRF(config).to(device)
     criterion = nn.CrossEntropyLoss(ignore_index=0)
     optimizer = op.Adam(model.parameters(), lr=config.lr, weight_decay=config.weight_decay)
+    max_epoch = config.max_epoch
 
     return max_epoch, device, train_data_loader, valid_data_loader, test_data_loader, optimizer, model

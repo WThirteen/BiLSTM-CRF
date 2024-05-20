@@ -10,10 +10,10 @@ import config
 class NERDataset(Dataset):
     def __init__(self, X, Y, *args, **kwargs):
         self.data = [{'x': X[i], 'y': Y[i]} for i in range(X.shape[0])]
-
+    # 通过索引获得数据
     def __getitem__(self, index):
         return self.data[index]
-
+    # 返回数据的长度
     def __len__(self):
         return len(self.data)
 
@@ -61,8 +61,4 @@ class NERLSTM_CRF(nn.Module):
         emissions = self.linear(self.dropout(feats))
         loss = -self.crf.forward(emissions, labels, mask)
         return torch.sum(loss)
-
-
-# ner chinese
-
 
